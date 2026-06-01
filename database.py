@@ -14,3 +14,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base sobre la cual heredarán nuestros modelos de las tablas
 Base = declarative_base()
+
+
+
+
