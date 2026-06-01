@@ -17,4 +17,8 @@ Base = declarative_base()
 
 
 
+# Base sobre la cual heredarán nuestros modelos de las tablas
 
+# Base sobre la cual heredarán nuestros modelos de las tablas
+
+# Base sobre la cual heredarán nuestros modelos de las tablas
