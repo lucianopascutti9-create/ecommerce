@@ -8,8 +8,8 @@ class Categoria(Base):
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, unique=True, index=True)
     
-    # Relación uno a muchos con Producto
-    productos = relationship("Producto", back_populates="categoria")
+    # Mapea con la relación en Producto usando "categorias" en plural
+    productos = relationship("Producto", back_populates="categorias")
 
 
 class Producto(Base):
@@ -20,15 +20,13 @@ class Producto(Base):
     precio = Column(Float)
     en_stock = Column(Boolean, default=True)
     
-    # Clave foránea que conecta con la tabla categorias
     categoria_id = Column(Integer, ForeignKey("categorias.id"))
     
-    # Relación inversa con Categoria
-    categoria = relationship("Categoria", back_populates="productos")
+    # Cambiado a plural 'categorias' con back_populates="productos" según el documento
+    categorias = relationship("Categoria", back_populates="productos")
 
 
 class Usuario(Base):
-    # Usamos "usuarios" en plural para que machee directo con tu visor de DBeaver
     __tablename__ = "usuarios"
     
     id = Column(Integer, primary_key=True, index=True)
