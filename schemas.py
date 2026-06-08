@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 # --- SCHEMAS DE PRODUCTO ---
 class ProductoCreate(BaseModel):
@@ -26,3 +26,24 @@ class CategoriaResponse(CategoriaBase):
     
     class Config:
         from_attributes = True
+
+#usuario
+
+class UsuarioBase(BaseModel):
+    nombre: str
+    email: EmailStr
+
+class UsuarioCreate(UsuarioBase):
+    password: str
+    es_admin: bool = False
+
+class UsuarioResponse(UsuarioBase):
+    id: int
+    es_admin: bool
+
+    class Config:
+        orm_mode = True
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
